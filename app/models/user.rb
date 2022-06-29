@@ -16,5 +16,4 @@ class User < ApplicationRecord
   #validates :photo, presence: true
   validates :country, presence: true 
 
-
 end

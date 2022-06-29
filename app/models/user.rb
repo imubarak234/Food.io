@@ -8,4 +8,13 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: 'author_id'
   has_many :recipes, foreign_key: 'author_id'
   
+
+  validates :first_name, presence: true, length: { maximum: 150 }
+  validates :last_name, presence: true, length: { maximum: 150 }
+  validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :address, presence: true, length: { maximum: 300 }
+  #validates :photo, presence: true
+  validates :country, presence: true 
+
+
 end

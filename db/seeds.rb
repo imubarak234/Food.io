@@ -9,46 +9,59 @@
 
 require "faker"
 
-10.times do
+15.times do
   users = User.new(
-    first_name: Faker::Name.first_name
-    last_name: Faker::Name.last_name
-    age: Faker::Number.between(from: 18, to: 70)
-    address: Faker::Address.full_address
-    photo: Faker::Avatar.image
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    age: Faker::Number.between(from: 18, to: 70),
+    address: Faker::Address.full_address,
+    photo: Faker::Avatar.image,
     counrty: Faker::Address.country
   )
   users.save
 end
 
-10.times do
+15.times do
   posts = Posts.new(
-    
+    author_id: Faker::Number.between(from: 1, to: 15),
+    title: Faker::Lorem.sentence(word_count: 3),
+    text: Faker::Lorem.sentence(word_count: 15, supplemental: true, random_words_to_add: 6),
+    comments_counter: Faker::Number.between(from: 4, to: 12),
+    likes_counter: Faker::Number.between(from: 4, to: 15)
   )
   posts.save
 end
 
-author_id
-title
-text
-comment_counter
-likes_counter
-
-5.times do
-  users = User.new(
-    full_name: Faker::Name.name
+15.times do 
+  comments = Comment.new(
+    post_id: author_id: Faker::Number.between(from: 1, to: 15),
+    author_id: Faker::Number.between(from: 1, to: 15),
+    text: Faker::Lorem.sentence(word_count: 11, supplemental: true, random_words_to_add: 6)
   )
-  users.save
+  comments.save
 end
 
 15.times do
-  course = Course.new(
-    title: Faker::Educator.course_name,
-    description: Faker::Lorem.paragraph(sentence_count: 10),
-    category: Faker::Educator.subject,
-    duration: Faker::Number.within(range: 4..30),
-    photo: Faker::Internet.domain_name,
-    user_id: Faker::Number.within(range: 1..5)
+  recipes = Recipe.new(
+    author_id: Faker::Number.between(from: 1, to: 15),
+    name: Faker::Food.dish,
+    preparation_time: "hours #{Faker::Number.between(from: 2, to: 15)}",
+    cooking_time: "hours #{Faker::Number.between(from: 2, to: 12)}",
+    public: Faker::Boolean.boolean,
+    photo: Faker::LoremFlickr.image
   )
-  course.save
+  recipes.save
 end
+
+10.times do
+  recipe_foods = RecipeFood.new(
+    food_id: Faker::Number.between(from: 1, to: 15),
+    recipe_id: Faker::Number.between(from: 1, to: 15),
+    quantity: Faker::Number.between(from: 3, to: 25)
+  )
+  recipe_foods.save
+end
+
+food_id
+recipe_id
+quantity

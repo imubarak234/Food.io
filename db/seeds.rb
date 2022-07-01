@@ -62,6 +62,16 @@ end
   recipe_foods.save
 end
 
-food_id
-recipe_id
-quantity
+10.times do
+  foods = Food.new(
+    user_id: Faker::Number.between(from: 1, to: 15),
+    measurement_unit: Faker::Measurement.metric_weight(amount: "all"),
+    price: 
+  )
+  foods.save
+end
+
+user_id
+measurement_unit
+price
+name

@@ -7,6 +7,21 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+def output(number)
+  var = ["Premium", "Standard", "Delux", "Executive", "StakeHolder"]
+  var[number - 1]
+end
+
+def years(number)
+  var = ["1 Year", "2 Years", "3 Years", "4 Years"]
+  var[number - 1]
+end
+
+def banks(number)
+  var = ["Key Stone", "First Bank", "Polaris Bank", "Guaranty Trust Bank", "Zenith Bank", "Ecobank", "Wema Bank", "Stanbic IBTC", "Access Bank"]
+  var[number - 1]
+end
+
 require "faker"
 
 15.times do
@@ -17,6 +32,8 @@ require "faker"
     address: Faker::Address.full_address,
     photo: Faker::Avatar.image,
     counrty: Faker::Address.country
+    email: Faker::Internet.email
+    password: Faker::Internet.password(min_length: 10, max_length: 20)
   )
   users.save
 end
@@ -66,12 +83,26 @@ end
   foods = Food.new(
     user_id: Faker::Number.between(from: 1, to: 15),
     measurement_unit: Faker::Measurement.metric_weight(amount: "all"),
-    price: 
+    price: Faker::Number.number(digits: 3),
+    name: Faker::Food.dish
   )
   foods.save
 end
 
-user_id
-measurement_unit
-price
-name
+10.times do
+  members = Membership.new(
+    user_id: Faker::Number.between(from: 1, to: 15),
+    account_id: Faker::Number.between(from: 1, to: 15),
+    type: output(Faker::Number.between(from: 1, to: 5)),
+    fees: Faker::Number.number(digits: 5),
+    duration: years(Faker::Number.between(from: 1, to: 4))
+  )
+end
+
+10.times do
+  account_details AccountDetail.new(
+    user_id: Faker::Number.between(from: 1, to: 15),
+    bank
+  )
+  account_details.save
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_04_182059) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_05_172815) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,18 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_182059) do
     t.bigint "post_id"
     t.index ["author_id"], name: "index_likes_on_author_id"
     t.index ["post_id"], name: "index_likes_on_post_id"
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.float "fees"
-    t.string "duration"
-    t.bigint "user_id"
-    t.bigint "account_detail_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "member_type"
-    t.index ["account_detail_id"], name: "index_memberships_on_account_detail_id"
-    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -107,6 +95,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_182059) do
     t.index ["author_id"], name: "index_recipes_on_author_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.float "fee"
+    t.string "duration"
+    t.string "category"
+    t.bigint "user_id"
+    t.bigint "account_detail_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_detail_id"], name: "index_subscriptions_on_account_detail_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -132,12 +132,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_182059) do
   add_foreign_key "foods", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users", column: "author_id"
-  add_foreign_key "memberships", "account_details"
-  add_foreign_key "memberships", "users"
   add_foreign_key "payments", "account_details"
   add_foreign_key "payments", "users"
   add_foreign_key "posts", "users", column: "author_id"
   add_foreign_key "recipe_foods", "foods"
   add_foreign_key "recipe_foods", "recipes"
   add_foreign_key "recipes", "users", column: "author_id"
+  add_foreign_key "subscriptions", "account_details"
+  add_foreign_key "subscriptions", "users"
 end

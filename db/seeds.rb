@@ -99,13 +99,13 @@ end
 end
 
 10.times do
-  members = Membership.new(
+  subs = Subscription.new(
     user_id: Faker::Number.between(from: 1, to: 15),
     account_detail_id: Faker::Number.between(from: 1, to: 10),
-    member_type: output(),
-    fees: Faker::Number.number(digits: 5),
+    fee: Faker::Number.number(digits: 5),
+    category: output(),
     duration: years()
   )
-  members.save
+  subs.save
 end
 

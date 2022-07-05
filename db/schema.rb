@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_04_181717) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_04_182059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_181717) do
     t.bigint "account_detail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
+    t.string "member_type"
     t.index ["account_detail_id"], name: "index_memberships_on_account_detail_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end

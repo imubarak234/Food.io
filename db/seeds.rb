@@ -101,8 +101,8 @@ end
 10.times do
   members = Membership.new(
     user_id: Faker::Number.between(from: 1, to: 15),
-    account_id: Faker::Number.between(from: 1, to: 10),
-    type: output(),
+    account_detail_id: Faker::Number.between(from: 1, to: 10),
+    member_type: output(),
     fees: Faker::Number.number(digits: 5),
     duration: years()
   )

@@ -15,10 +15,10 @@ class User < ApplicationRecord
   
 
   validates :first_name, presence: true, length: { maximum: 150 }
-  validates :last_name, presence: true, length: { maximum: 150 }
-  validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :address, presence: true, length: { maximum: 300 }
-  #validates :photo, presence: true
-  validates :country, presence: true 
+  # validates :last_name, presence: true, length: { maximum: 150 }
+  # validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  # validates :address, presence: true, length: { maximum: 300 }
+  # #validates :photo, presence: true
+  # validates :country, presence: true 
 
 end

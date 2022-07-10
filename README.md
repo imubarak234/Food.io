@@ -1,5 +1,5 @@
 # Food.io
-The food.io web application is design with the intent to be a link between a community of foodies. Were food lovers can interact. Share information and recipes, and purchase food.
+The food.io web application is designed with the intent to be a link between a community of foodies. A safe space were food lovers can interact, share information recipes, and purchase food.
 
 ## Built With
 
